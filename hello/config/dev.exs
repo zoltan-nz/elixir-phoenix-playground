@@ -2,13 +2,10 @@ import Config
 
 # Configure your database
 config :hello, Hello.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "hello_dev",
+  database: Path.expand("../hello_dev.db", Path.dirname(__ENV__.file)),
+  pool_size: 5,
   stacktrace: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  show_sensitive_data_on_connection_error: true
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -23,7 +20,7 @@ config :hello, HelloWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "7OOZMMYiq/mwQL4wQWx9+M7UFArAPguENUCquQud44RbpeQWQQpJuL/5MFqHyOEg",
+  secret_key_base: "HnGgTnqBkkdbfAxGT0kGDkNNBmc4nlFYw4esAaUJBu0HlheH8sD8V9gTV8NYWZPs",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
